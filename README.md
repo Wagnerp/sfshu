@@ -1,16 +1,16 @@
-==SFSHU
+##SFSHU
 
 (a.k.a. Simple File System Hashing Utility)
 
-===What is it?
+###What is it?
 
 SFSHU is a very simpleistic utility to produce file lists with hashes.
 
-===What hashing algorithms does it support?
+###What hashing algorithms does it support?
 
 * None
 
-===FAQ
+###FAQ
 
 *What are the system requirements*
 
@@ -28,7 +28,7 @@ Yep, but this one is mine.
 
 Great question, if you find out, let me know! ;)
 
-===License
+###License
 
 Copyright (c) 2013, Adam Caudill <adam@adamcaudill.com>
 All rights reserved.

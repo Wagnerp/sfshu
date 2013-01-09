@@ -40,12 +40,31 @@ namespace sfshu
 
       switch (Algorithm)
       {
+        case HashAlgorithm.MD5:
+          ret = _HashMD5(file);
+          break;
         case HashAlgorithm.SHA1:
           ret = _HashSHA1(file);
           break;
         case HashAlgorithm.SHA256:
           ret = _HashSHA256(file);
           break;
+      }
+
+      return ret;
+    }
+
+    private string _HashMD5(string file)
+    {
+      string ret;
+
+      using (var fs = new FileStream(file, FileMode.Open))
+      {
+        using (var md5 = MD5.Create())
+        {
+          byte[] hash = md5.ComputeHash(fs);
+          ret = _FormatBytes(hash);
+        }
       }
 
       return ret;

@@ -32,6 +32,9 @@ namespace sfshu
       HashAlgorithm hash;
       switch(args[1])
       {
+        case "/md5":
+          hash = HashAlgorithm.MD5;
+          break;
         case "/sha1":
           hash = HashAlgorithm.SHA1;
           break;

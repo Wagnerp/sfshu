@@ -8,7 +8,11 @@ SFSHU is a very simpleistic utility to produce file lists with hashes.
 
 ###What hashing algorithms does it support?
 
-* None
+* SHA1
+
+###Usage
+
+`sfshu.exe C:\ /sha1`
 
 ###FAQ
 
@@ -31,6 +35,7 @@ Great question, if you find out, let me know! ;)
 ###License
 
 Copyright (c) 2013, Adam Caudill <adam@adamcaudill.com>
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

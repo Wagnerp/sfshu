@@ -9,6 +9,7 @@ SFSHU is a very simpleistic utility to produce file lists with hashes.
 ###What hashing algorithms does it support?
 
 * SHA1
+* SHA256
 
 ###Usage
 

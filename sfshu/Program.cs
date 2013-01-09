@@ -35,6 +35,9 @@ namespace sfshu
         case "/sha1":
           hash = HashAlgorithm.SHA1;
           break;
+        case "/sha256":
+          hash = HashAlgorithm.SHA256;
+          break;
         default:
           Console.WriteLine(string.Format("Invalid Hash Selection: {0}", args[1]));
           return;

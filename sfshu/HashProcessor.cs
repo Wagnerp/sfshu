@@ -43,6 +43,9 @@ namespace sfshu
         case HashAlgorithm.SHA1:
           ret = _HashSHA1(file);
           break;
+        case HashAlgorithm.SHA256:
+          ret = _HashSHA256(file);
+          break;
       }
 
       return ret;
@@ -57,6 +60,22 @@ namespace sfshu
         using (var sha1 = new SHA1Managed())
         {
           byte[] hash = sha1.ComputeHash(fs);
+          ret = _FormatBytes(hash);
+        }
+      }
+
+      return ret;
+    }
+
+    private string _HashSHA256(string file)
+    {
+      string ret;
+
+      using (var fs = new FileStream(file, FileMode.Open))
+      {
+        using (var sha256 = new SHA256Managed())
+        {
+          byte[] hash = sha256.ComputeHash(fs);
           ret = _FormatBytes(hash);
         }
       }

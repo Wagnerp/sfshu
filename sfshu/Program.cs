@@ -22,7 +22,7 @@ namespace sfshu
 
       //we assume the first param is the path we are working with
       // so we should see if it acually exists
-      if (!Directory.Exists(args[0]))
+      if (!Directory.Exists(args[0]) && !File.Exists(args[0]))
       {
         Console.WriteLine(string.Format("Path does not exist: {0}", args[0]));
         return;

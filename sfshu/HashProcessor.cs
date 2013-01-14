@@ -20,17 +20,30 @@ namespace sfshu
 
     public void Run()
     {
-      foreach (var file in SafeWalk.EnumerateFiles(Path, "*", SearchOption.AllDirectories))
+      //see if we have a single file, path
+      if (File.Exists(Path))
       {
-        try
+        _RunFile(Path);
+      }
+      else
+      {
+        foreach (var file in SafeWalk.EnumerateFiles(Path, "*", SearchOption.AllDirectories))
         {
-          var hash = _HashFile(file);
-          Console.WriteLine(string.Format("{0}\t{1}", file, hash));
+          _RunFile(file);
         }
-        catch (Exception ex)
-        {
-          Console.WriteLine(string.Format("{0}\tError: {1}", file, ex.Message));
-        }
+      }
+    }
+
+    private void _RunFile(string file)
+    {
+      try
+      {
+        var hash = _HashFile(file);
+        Console.WriteLine(string.Format("{0}\t{1}", file, hash));
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(string.Format("{0}\tError: {1}", file, ex.Message));
       }
     }
 

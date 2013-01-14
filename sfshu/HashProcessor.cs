@@ -107,7 +107,7 @@ namespace sfshu
       var ret = new StringBuilder(2 * hash.Length);
       foreach (var val in hash)
       {
-        ret.AppendFormat("{0:X2}", val);
+        ret.AppendFormat("{0:x2}", val);
       }
 
       return ret.ToString();

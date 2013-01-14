@@ -73,7 +73,7 @@ namespace sfshu
     private string _HashSHA1(string file)
     {
       string ret;
-      
+
       using (var fs = new FileStream(file, FileMode.Open))
       {
         using (var sha1 = new SHA1Managed())

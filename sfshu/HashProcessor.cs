@@ -41,13 +41,13 @@ namespace sfshu
       switch (Algorithm)
       {
         case HashAlgorithm.MD5:
-          ret = _HashMD5(file);
+          ret = _HashStandard(file, MD5.Create());
           break;
         case HashAlgorithm.SHA1:
-          ret = _HashSHA1(file);
+          ret = _HashStandard(file, new SHA1Managed());
           break;
         case HashAlgorithm.SHA256:
-          ret = _HashSHA256(file);
+          ret = _HashStandard(file, new SHA256Managed());
           break;
         case HashAlgorithm.BLAKE2b:
           ret = _HashBLAKE2b(file);
@@ -57,47 +57,15 @@ namespace sfshu
       return ret;
     }
 
-    private string _HashMD5(string file)
+    private string _HashStandard(string file, System.Security.Cryptography.HashAlgorithm algorithm)
     {
       string ret;
 
       using (var fs = new FileStream(file, FileMode.Open))
       {
-        using (var md5 = MD5.Create())
+        using (algorithm)
         {
-          byte[] hash = md5.ComputeHash(fs);
-          ret = _FormatBytes(hash);
-        }
-      }
-
-      return ret;
-    }
-
-    private string _HashSHA1(string file)
-    {
-      string ret;
-
-      using (var fs = new FileStream(file, FileMode.Open))
-      {
-        using (var sha1 = new SHA1Managed())
-        {
-          byte[] hash = sha1.ComputeHash(fs);
-          ret = _FormatBytes(hash);
-        }
-      }
-
-      return ret;
-    }
-
-    private string _HashSHA256(string file)
-    {
-      string ret;
-
-      using (var fs = new FileStream(file, FileMode.Open))
-      {
-        using (var sha256 = new SHA256Managed())
-        {
-          byte[] hash = sha256.ComputeHash(fs);
+          var hash = algorithm.ComputeHash(fs);
           ret = _FormatBytes(hash);
         }
       }

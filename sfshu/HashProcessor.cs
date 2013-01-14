@@ -49,6 +49,9 @@ namespace sfshu
         case HashAlgorithm.SHA256:
           ret = _HashSHA256(file);
           break;
+        case HashAlgorithm.BLAKE2b:
+          ret = _HashBLAKE2b(file);
+          break;
       }
 
       return ret;
@@ -97,6 +100,32 @@ namespace sfshu
           byte[] hash = sha256.ComputeHash(fs);
           ret = _FormatBytes(hash);
         }
+      }
+
+      return ret;
+    }
+
+    private string _HashBLAKE2b(string file)
+    {
+      string ret;
+
+      using (var fs = new FileStream(file, FileMode.Open))
+      {
+        var blake = Blake2Sharp.Blake2B.Create();
+        
+        var data = new byte[4096];
+        int cbSize;
+
+        do
+        {
+          cbSize = fs.Read(data, 0, 4096);
+          if (cbSize > 0)
+            blake.Update(data, 0, cbSize);
+        } while (cbSize > 0);
+
+        var hash = blake.Finish();
+
+        ret = _FormatBytes(hash);
       }
 
       return ret;

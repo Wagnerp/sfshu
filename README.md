@@ -11,6 +11,7 @@ SFSHU is a very simpleistic utility to produce file lists with hashes.
 * MD5
 * SHA1
 * SHA256
+* [BLAKE2b](https://blake2.net/)
 
 ###Usage
 

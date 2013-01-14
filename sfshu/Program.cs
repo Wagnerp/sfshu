@@ -41,6 +41,9 @@ namespace sfshu
         case "/sha256":
           hash = HashAlgorithm.SHA256;
           break;
+        case "/blake2b":
+          hash = HashAlgorithm.BLAKE2b;
+          break;
         default:
           Console.WriteLine(string.Format("Invalid Hash Selection: {0}", args[1]));
           return;

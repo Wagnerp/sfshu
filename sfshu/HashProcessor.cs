@@ -20,7 +20,7 @@ namespace sfshu
 
     public void Run()
     {
-      foreach (var file in Directory.EnumerateFiles(Path, "*", SearchOption.AllDirectories))
+      foreach (var file in SafeWalk.EnumerateFiles(Path, "*", SearchOption.AllDirectories))
       {
         try
         {
